@@ -1,11 +1,11 @@
 import ProductPageFactory from '../support/productPage'
-describe("Add product",()=>{
+describe("Add product shopping cart",()=>{
   const productPage = new ProductPageFactory()
   beforeEach(() => {
     cy.visit('https://demo.nopcommerce.com/')
     cy.viewport('macbook-15')
   })
-  it('Kiểm tra thêm mới sản phẩm vào giỏ hàng thành công', () => {
+  it('Kiểm tra thêm mới và verify sản phẩm vào giỏ hàng thành công', () => {
       productPage.clickMenu('Computers')
       productPage.clicksubMenu('Desktops')
       productPage.clickProduct('Build your own computer')
@@ -16,7 +16,9 @@ describe("Add product",()=>{
       productPage.addToCart()
       productPage.verifyNameSuccess('The product has been added to your shopping cart')
       productPage.clickShoppingCart()
-      productPage.verifyShoppingCart('Build your own computer','RAM: 2 GB','HDD: 320 GB')
+      productPage.verifyShoppingCartName('Build your own computer')
+      productPage.verifyInformation('RAM: 2 GB')
+      productPage.verifyInformation('HDD: 320 GB')
       productPage.verifyQuantity('4')
   })
 })

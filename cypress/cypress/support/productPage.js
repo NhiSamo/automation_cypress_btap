@@ -27,8 +27,11 @@ export default class productPage{
         cy.wait(1000)
         cy.get(productUI.verify).should('have.contain',nameVerify)
     }
-    verifyShoppingCart(nameVerify1, nameVerify2, nameVerify3){
-        cy.get(productUI.verifyShoppingCart).should('have.contain',nameVerify1, nameVerify2, nameVerify3)
+    verifyShoppingCartName(nameVerify){
+        cy.get(productUI.verifyShoppingCartName).should('have.contain',nameVerify)
+    }
+    verifyInformation(nameVerify){
+        cy.get(productUI.verifyInformation).should('have.contain',nameVerify)
     }
     verifyQuantity(quantity){
         cy.get(productUI.quantity).should('have.value',quantity)
@@ -36,4 +39,5 @@ export default class productPage{
     clickShoppingCart(){
         cy.get(productUI.shoppingCart).contains('shopping cart').click({force:true})
     }
+    
 }
